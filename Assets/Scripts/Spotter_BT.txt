@@ -1,11 +1,13 @@
-tree ("Root")
+tree("Root")
 		fallback
 			sequence
-				CanSeePlayer()
-				AwareOfPlayer()
-			Warn()
-			tree "Chase"
-		repeat
+				fallback
+					CanSeePlayer()
+					AwareOfPlayer()
+				Warn()
+				tree "Chase"
+			repeat
+				
 
 tree ("Chase")
 	sequence

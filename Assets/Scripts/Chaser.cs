@@ -38,6 +38,7 @@ public class chaser : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         waypointManager = GetComponent<WaypointManager>();
         audiosource = GetComponentInChildren<AudioSource>();
+       
         
     }
 
@@ -172,7 +173,15 @@ public class chaser : MonoBehaviour
 
     //}
 
-
+    [Task]
+    void wait(float time)
+    {
+         StartCoroutine(waittime());
+         IEnumerator waittime()
+        {
+            yield return new WaitForSeconds(time);
+        }
+    }
 
     void OnTriggerEnter(Collider enemy)
     {

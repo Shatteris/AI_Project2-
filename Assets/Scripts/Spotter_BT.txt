@@ -1,0 +1,26 @@
+tree ("Root")
+		fallback
+			sequence
+				CanSeePlayer()
+				AwareOfPlayer()
+			Warn()
+			tree "Chase"
+		repeat
+
+tree ("Chase")
+	sequence
+		ChasePlayer
+		fallback
+			CanSeePlayer
+			sequence
+				LastKnownLocation
+				while
+					not CanSeePlayer
+					race
+						sequence
+							wait 15.0
+							SetDestination_Random
+							wait 10.0
+							forgetPlayer
+						repeat
+							SetDestination_Origin 2.0
